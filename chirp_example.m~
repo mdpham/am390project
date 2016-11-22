@@ -1,0 +1,31 @@
+%% Chirping example
+% Nyquist sampling: Fs > 2*freq*duration
+% since the frequency at T_end will be largest frequency component
+clear all; close all;
+Fs = 3000;                    % Sampling Frequency
+dt = 1/Fs;                    % Sampling Period
+duration = 20;                % Sound duration
+t = (0:dt:duration-dt)';      % Time domain
+N = size(t,1);                % Length of signal
+
+
+
+freq = 10;
+signal_chirp = sin(2*pi*freq*t.^2);
+fft_chirp = fftshift(fft(signal_chirp));
+dw = Fs/N;
+w_chirp = -Fs/2:dw:Fs/2-dw;           % Frequency domain
+
+subplot(2,1,2)
+plot(w_chirp(2*end/5:3*end/5),abs(fft_chirp(2*end/5:3*end/5)/N))
+xlabel('Frequency \omega (Hz)')
+ylabel('|F(\omega)|')
+title('Magnitude Response f(t) = sin(2\pi10t^2)')
+
+subplot(2,1,1)
+plot(t(1:end/4),signal_chirp(1:end/4))
+xlabel('Time t')
+ylabel('f(t)')
+title('f(t) = sin(2\pi10t^2)')
+
+sound(signal_chirp,Fs)
