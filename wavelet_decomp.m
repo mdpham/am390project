@@ -1,7 +1,7 @@
 %% Wavelet
 
 % How much energy to retain [0,1]
-r = 0.99;
+r = 0.75;
 
 % Signal
 t = linspace(0,1,1000);
@@ -10,7 +10,7 @@ f = sin(2*pi*t) + sin(3*pi*t) + sin(4*pi*t) + sin(100*pi*t);
 
 % Wavelet decomposition
 wavelet = 'db4';
-[coeffs,l] = wavedec(f,2,wavelet);
+[coeffs,l] = wavedec(f,4,wavelet);
 
 % Position in c vector for looping over detail coeffs
 c = coeffs;
