@@ -38,13 +38,13 @@ energy = 100*(norm(xcomp,2)^2)/(norm(X,2)^2)
 retained = 100*(norm(nc,2)^2)/(norm(X,2)^2)
 
 % Smooth
-sigma = 1;
-size = 10;
-gx = linspace(-size / 2, size / 2, size);
-gaussfilter = exp(-gx .^ 2 / (2 * sigma ^ 2));
-gaussfilter = gaussfilter / sum (gaussfilter);
-xcompsmooth = conv(xcomp, gaussfilter, 'same');
+sigma = 2;
+% % size = 5;
+% % gx = linspace(-size / 2, size / 2, size);
+% % gaussfilter = exp(-gx .^ 2 / (2 * sigma ^ 2));
+% % gaussfilter = gaussfilter / sum (gaussfilter)
+% % xcompsmooth = conv(xcomp, gaussfilter, 'same');
 
 % Play
-sound(xcompsmooth(1:floor(end/15)),Fs)
+sound(xcompsmooth(1:floor(end/4)),Fs)
 end
