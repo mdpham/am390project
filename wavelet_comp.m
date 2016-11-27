@@ -1,10 +1,10 @@
-function [f,t, err, energy, retained, reduced] = wavelet_comp(N, P, wname)
+function [f,t, err, energy, retained, reduced] = wavelet_comp(N, P, wname, filename)
 % N is vector of what levels [1 2 3 4 5] to threshold
 % P is vector of threshold percentages for each level respective to N
-% wname is name of wavelet family to use
+% filename is the file name, including the filepath
 
 % Get original signal
-[X,Fs] = audioread('/audio/violin.wav');
+[X,Fs] = audioread(filename);
 X = mean(X')';
 dt = 1/Fs;
 t = 0:dt:(length(X)*dt - dt);
@@ -47,4 +47,4 @@ xcompsmooth = conv(xcomp, gaussfilter, 'same');
 
 % Play
 sound(xcompsmooth(1:floor(end/15)),Fs)
-end
+end	
