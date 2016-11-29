@@ -25,5 +25,4 @@ f_r = ifft(F_r); % reconstruct signal
 
 err = norm(f-f_r,2);
 energy_ratio = 100*(norm(f_r,2)^2)/(norm(f,2)^2);
-{err, energy_ratio};
 

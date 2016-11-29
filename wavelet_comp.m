@@ -29,13 +29,13 @@ xlabel('Time (secs)')
 
 % Scores
 % Percentage of coefficients zeroed
-reduced = 100*(sum(nc==0) - sum(coeff==0))/length(X)
+reduced = 100*(sum(nc==0) - sum(coeff==0))/length(X);
 % Error
-err = 100*norm(X-xcomp,2)/norm(X,2)
+err = 100*norm(X-xcomp,2)/norm(X,2);
 % Energy ratio
-energy = 100*(norm(xcomp,2)^2)/(norm(X,2)^2)
+energy = 100*(norm(xcomp,2)^2)/(norm(X,2)^2);
 % Retained energy
-retained = 100*(norm(nc,2)^2)/(norm(X,2)^2)
+retained = 100*(norm(nc,2)^2)/(norm(X,2)^2);
 
 % Smooth
 sigma = 1;
